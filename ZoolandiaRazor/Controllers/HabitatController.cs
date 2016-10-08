@@ -11,7 +11,6 @@ namespace ZoolandiaRazor.Controllers
         // GET: Habitat
         public ActionResult Index()
         {
-            ViewBag.Message = "Woo-hoooo!  It's habitat time!";
             return View();
         }
 

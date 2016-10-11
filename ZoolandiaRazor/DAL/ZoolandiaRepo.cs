@@ -45,6 +45,28 @@ namespace ZoolandiaRazor.DAL
 
         }
 
+        public List<Habitat> GetAllHabitats()
+        {
+            List<Habitat> HabitatList = Context.Habitats.ToList();
+            return HabitatList;
+        }
 
+        public Habitat GetHabitatById(int Id)
+        {
+            var habitat = Context.Habitats.FirstOrDefault(h => h.HabitatId == Id);
+            return habitat;
+        }
+
+        public List<Employee> GetAllEmployees()
+        {
+            List<Employee> EmployeeList = Context.Employees.ToList();
+            return EmployeeList;
+        }
+
+        public Employee GetEmployeeById(int Id)
+        {
+            var employee = Context.Employees.FirstOrDefault(e => e.EmployeeId == Id);
+            return employee;
+        }
     }
 }

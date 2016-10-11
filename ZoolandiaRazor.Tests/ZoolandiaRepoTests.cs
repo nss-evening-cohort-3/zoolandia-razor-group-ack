@@ -15,13 +15,19 @@ namespace ZoolandiaRazor.Tests
 
         Mock<AnimalContext> animal_context;
         Mock<DbSet<Animal>> animal_table;
-        Mock<DbSet<Habitat>> habitat_table;
         private List<Animal> animals;
-        private List<Habitat> habitats;
         private Animal animal1;
         private Animal animal2;
+        Mock<DbSet<Habitat>> habitat_table;
+        private List<Habitat> habitats;
         private Habitat habitat1;
         private Habitat habitat2;
+        Mock<DbSet<Employee>> employee_table;
+        private List<Employee> employees;
+        private Employee employee1;
+        private Employee employee2;
+
+
 
        
         
@@ -62,6 +68,21 @@ namespace ZoolandiaRazor.Tests
             habitats = new List<Habitat> { habitat1, habitat2 };
             animal_context.Setup(q => q.Habitats).Returns(habitat_table.Object);
 
+            employee_table = new Mock<DbSet<Employee>>();
+            employee1 = new Employee
+            {
+                EmployeeId = 4,
+                EmployeeAge = 32,
+                EmployeeName = "Jane Doe"
+            };
+            employee2 = new Employee
+            {
+                EmployeeId = 7,
+                EmployeeAge = 21,
+                EmployeeName = "Danger Mouse"
+            };
+            employees = new List<Employee> { employee1, employee2 };
+            animal_context.Setup(w => w.Employees).Returns(employee_table.Object);
 
             ConnectMocksToDatabase();
 
@@ -76,6 +97,20 @@ namespace ZoolandiaRazor.Tests
             animal_table.As<IQueryable<Animal>>().Setup(a => a.Expression).Returns(queryable_list.Expression);
             animal_table.As<IQueryable<Animal>>().Setup(a => a.ElementType).Returns(queryable_list.ElementType);
             animal_table.As<IQueryable<Animal>>().Setup(a => a.GetEnumerator()).Returns(queryable_list.GetEnumerator());
+
+            var habitat_list = habitats.AsQueryable();
+
+            habitat_table.As<IQueryable<Habitat>>().Setup(h => h.Provider).Returns(habitat_list.Provider);
+            habitat_table.As<IQueryable<Habitat>>().Setup(h => h.Expression).Returns(habitat_list.Expression);
+            habitat_table.As<IQueryable<Habitat>>().Setup(h => h.ElementType).Returns(habitat_list.ElementType);
+            habitat_table.As<IQueryable<Habitat>>().Setup(h => h.GetEnumerator()).Returns(habitat_list.GetEnumerator());
+
+            var employee_list = employees.AsQueryable();
+
+            employee_table.As<IQueryable<Employee>>().Setup(e => e.Provider).Returns(employee_list.Provider);
+            employee_table.As<IQueryable<Employee>>().Setup(e => e.Expression).Returns(employee_list.Expression);
+            employee_table.As<IQueryable<Employee>>().Setup(e => e.ElementType).Returns(employee_list.ElementType);
+            employee_table.As<IQueryable<Employee>>().Setup(e => e.GetEnumerator()).Returns(employee_list.GetEnumerator());
         }
 
         [TestCleanup]
@@ -84,6 +119,7 @@ namespace ZoolandiaRazor.Tests
             animal_context = null;
             animal_table = null;
             animals = null;
+            habitats = null;
         }
        
 
@@ -125,21 +161,70 @@ namespace ZoolandiaRazor.Tests
             Animal myAnimals = my_repo.GetAnimalById(13);
 
             //Assert
-            Assert.AreEqual(myAnimals, animal2);
+            Assert.AreEqual(myAnimals, animal2);           
+        }
 
-            
+        [TestMethod]
+        public void RepoCanGetAllHabitats()
+        {
+            //Arrange
+            ZoolandiaRepo my_repo = new ZoolandiaRepo(animal_context.Object);
+
+            //Act
+            List<Habitat> myHabitats = my_repo.GetAllHabitats();
+
+            //Assert
+            CollectionAssert.AreEqual(myHabitats, habitats);
+        }
+
+        [TestMethod]
+        public void RepoCanGetHabitatById()
+        {
+            //Arrange
+            ZoolandiaRepo my_repo = new ZoolandiaRepo(animal_context.Object);
+
+            //Act
+            Habitat myHabitats = my_repo.GetHabitatById(2);
+
+            //Assert
+            Assert.AreEqual(myHabitats, habitat2);
+        }
+
+        [TestMethod]
+        public void CanGetAllEmployees()
+        {
+            //Arrange
+            ZoolandiaRepo my_repo = new ZoolandiaRepo(animal_context.Object);
+
+            //Act
+            List<Employee> myEmployees = my_repo.GetAllEmployees();
+
+            //Assert
+            CollectionAssert.AreEqual(myEmployees, employees);
+
+        }
+
+        [TestMethod]
+        public void CanGetEmployeeById()
+        {
+            //Arrange
+            ZoolandiaRepo my_repo = new ZoolandiaRepo(animal_context.Object);
+
+            //Act
+            Employee myEmployees = my_repo.GetEmployeeById(4);
+
+            //Assert
+            Assert.AreEqual(myEmployees, employee1);
         }
     }
 }
 
 
 
-//Get animal by id
 
-//Get all habitats
 
-//Get habitat by id
 
-//Get all employees
+
+
 
 //Get employee by id

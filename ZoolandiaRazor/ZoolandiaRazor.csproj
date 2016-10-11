@@ -190,11 +190,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Animal\Index.cshtml" />
     <Content Include="Views\Animal\Details.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Habitat\Index.cshtml" />
+    <Content Include="Views\Habitat\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Employee\" />
-    <Folder Include="Views\Habitat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

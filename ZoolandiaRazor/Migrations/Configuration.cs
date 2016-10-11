@@ -1,5 +1,6 @@
 namespace ZoolandiaRazor.Migrations
 {
+    using DAL.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,13 @@ namespace ZoolandiaRazor.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Animals.AddOrUpdate(
+                p => p.AnimalName,
+                new Animal { AnimalAge = 3, AnimalName = "Dug", SpeciesCommonName = "Dinosaur", SpeciesScientificName = "Tyrannosaurus rex" },
+                new Animal { AnimalAge = 5, AnimalName = "Spot", SpeciesCommonName = "Fox", SpeciesScientificName = "Vulpes something" }
+                );
+
         }
     }
 }

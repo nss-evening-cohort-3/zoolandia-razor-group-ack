@@ -138,6 +138,7 @@
     <Compile Include="DAL\Models\Employees.cs" />
     <Compile Include="DAL\Models\Habitats.cs" />
     <Compile Include="DAL\Models\HabitatTypes.cs" />
+    <Compile Include="DAL\ZoolandiaRepo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,10 +188,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\Animal\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Animal\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\Habitat\" />
   </ItemGroup>

@@ -130,14 +130,12 @@
     <Compile Include="DAL\NewModels\Habitat.cs" />
     <Compile Include="DAL\NewModels\HabitatType.cs" />
     <Compile Include="DAL\ZoolandiaContext.cs" />
+    <Compile Include="DAL\ZoolandiaRepository.cs" />
     <Compile Include="Migrations\201610081823237_initialcreate.cs" />
     <Compile Include="Migrations\201610081823237_initialcreate.Designer.cs">
       <DependentUpon>201610081823237_initialcreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Bird.cs" />
-    <Compile Include="Models\IFlying.cs" />
-    <Compile Include="Services\AnimalService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -148,8 +146,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Animal.cs" />
-    <Compile Include="Models\Dog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,10 +183,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\Animal\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Animal\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\Habitat\" />
   </ItemGroup>

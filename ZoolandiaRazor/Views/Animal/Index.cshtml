@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Animals.Count</h2>
+
+@{
+    for (var i = 0; i < @ViewBag.Animals.Count; i++)
+    {
+    <h5>THIS IS A @ViewBag.Animals[i].AnimalName</h5>
+    <a href="/animal/details/@ViewBag.Animals[i].AnimalId">CLICK ME DAMMIT</a>
+    };
+  }

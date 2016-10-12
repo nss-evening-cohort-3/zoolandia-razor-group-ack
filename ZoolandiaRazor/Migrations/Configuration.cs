@@ -34,6 +34,12 @@ namespace ZoolandiaRazor.Migrations
                 new Animal { AnimalAge = 5, AnimalName = "Spot", SpeciesCommonName = "Fox", SpeciesScientificName = "Vulpes something" }
                 );
 
+            context.Habitats.AddOrUpdate(
+                p => p.HabitatName,
+                new Habitat { HabitatName = "Arctic" },
+                new Habitat { HabitatName = "Jungle" }
+                );
+
         }
     }
 }

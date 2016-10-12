@@ -40,6 +40,12 @@ namespace ZoolandiaRazor.Migrations
                 new Habitat { HabitatName = "Jungle" }
                 );
 
+            context.Employees.AddOrUpdate(
+                p => p.EmployeeName,
+                new Employee { EmployeeAge = 32, EmployeeName = "the Dude" },
+                new Employee { EmployeeAge = 42, EmployeeName = "Ford Prefect" }
+                );
+
         }
     }
 }

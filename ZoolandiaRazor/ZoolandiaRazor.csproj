@@ -133,7 +133,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HabitatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\AnimalContext.cs" />
+    <Compile Include="DAL\ZoolandiaContext.cs" />
     <Compile Include="DAL\Models\Animals.cs" />
     <Compile Include="DAL\Models\Employees.cs" />
     <Compile Include="DAL\Models\Habitats.cs" />

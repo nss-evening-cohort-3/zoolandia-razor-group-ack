@@ -7,7 +7,7 @@ using ZoolandiaRazor.DAL.Models;
 
 namespace ZoolandiaRazor.DAL
 {
-    public class AnimalContext : DbContext
+    public class ZoolandiaContext : DbContext
     {
         public virtual DbSet<Animal> Animals { get; set; }
         public virtual DbSet<Habitat> Habitats { get; set; }
